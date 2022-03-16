@@ -1,0 +1,31 @@
+﻿@model IEnumerable<FA.JustBlog.Models.Post>
+
+@if (ViewBag.Title == "CategoryName")
+{
+    <h2 style="text-align:center">Category Name : <span>@Model.First().Category.CategoryName</span></h2>
+}
+else
+{
+    <h2>@ViewBag.Title</h2>
+}
+
+@foreach (var item in Model)
+{
+    <h2>
+        @Html.DisplayFor(modelItem => item.Published)
+    </h2>
+    <small>
+        @Html.DisplayFor(modelItem => item.CreateDate)
+    </small>
+    <small>
+        View : @Html.DisplayFor(modelItem => item.ViewCount)
+    </small>
+    <h4>
+        @Html.DisplayFor(modelItem => item.Title)
+    </h4>
+    <p>
+        @Html.DisplayFor(modelItem => item.PostContent)
+    </p>
+    <p><a href="/Post/Detail/@item.Id">Detail</a></p>
+}
+

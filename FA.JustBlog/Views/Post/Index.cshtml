@@ -1,0 +1,31 @@
+﻿@model IEnumerable<FA.JustBlog.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>All post</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    @foreach (var item in Model) {
+            <h2>
+                @Html.DisplayFor(modelItem => item.Published)
+            </h2>
+            <small>
+                @Html.DisplayFor(modelItem => item.PostedOn)
+            </small>
+            <small>
+                @Html.DisplayFor(modelItem => item.CreateDate)
+            </small>
+            <h4>
+                @Html.DisplayFor(modelItem => item.Title)
+            </h4>
+            <p>
+                @Html.DisplayFor(modelItem => item.PostContent)
+            </p>
+            <hr/>
+            <p><a href="/Post/Detail/@item.Id">Detail</a></p>
+    }
